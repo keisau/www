@@ -1,4 +1,10 @@
+import 'file-loader?name=[name].[ext]!../html/index.html'
+import '../sass/stylesheet.scss'
+import '../md'
+
 import React from 'react'
 import { render } from 'react-dom'
 
-render(<div>Hello</div>, document.getElementById('root'))
+import routes from './routes'
+
+render(routes, document.getElementById('root'))

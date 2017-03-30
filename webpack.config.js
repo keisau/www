@@ -8,11 +8,11 @@ const paths = {
 }
 
 const plugins = [
-  new ExtractTextPlugin(path.resolve(paths.build, 'stylesheets/main.css'))
+  new ExtractTextPlugin('stylesheets/main.css')
 ]
 
 const output = {
-  filename: path.resolve(paths.build, 'scripts/bundle.js'),
+  filename: 'scripts/bundle.js',
   libraryTarget: 'umd',
   publicPath: '/',
   path: paths.build
@@ -31,7 +31,7 @@ const rules = [
         loader: 'babel-loader',
         options: {
           presets: [
-            'es2017'
+            'es2017',
             'es2016',
             'es2015',
             'react',
@@ -57,13 +57,52 @@ const rules = [
       use: 'css-loader!sass-loader'
     })
   },
+  {
+    test: /\.md$/,
+    loader: 'file-loader?limit=16384&name=markdown/[name].[ext]',
+  },
   { test: /\.json$/, loader: 'json-loader' }
 ]
 
-module.exports = function(env) {
-  return {
+const devServer = {
+  contentBase: paths.build,
+  compress: true,
+  historyApiFallback: {
+    rewrites: [
+      {
+        from: /^\/markdown\/.*$/,
+        to({ parsedUrl }) {
+          return `${parsedUrl.pathname}.md`
+        }
+      }
+    ]
+  },
+}
+
+module.exports = function(env = {}) {
+  const isProduction = !!env.production || process.env.NODE_ENV === 'production'
+
+  return isProduction ? {
     entry:  [
-      path.resolve(paths.src, 'index.js'),
+      'whatwg-fetch',
+      path.resolve(paths.src, 'js/index.js')
     ],
+    output,
+    module: {
+      rules
+    },
+    plugins,
+  } : {
+    entry:  [
+      'whatwg-fetch',
+      path.resolve(paths.src, 'js/index.js')
+    ],
+    output,
+    module: {
+      rules
+    },
+    devtool: 'source-map',
+    plugins,
+    devServer
   }
 }
