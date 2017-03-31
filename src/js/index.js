@@ -1,3 +1,5 @@
+import 'babel-polyfill'
+
 import 'file-loader?name=[name].[ext]!../html/index.html'
 import '../sass/stylesheet.scss'
 import '../md'

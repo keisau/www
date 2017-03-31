@@ -1,30 +1,51 @@
 import React, { Component } from 'react'
 import marked from 'marked'
 
+import markdowns from '../../md'
+
 export default class Blog extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      content: null,
+      blog: null,
       error: null
     }
   }
 
   componentDidMount() {
-    const url = `/markdown/${this.props.match.params.article}`
+    const id = this.props.match.params.article
 
-    console.log(url)
+    if (id > markdowns.length - 1) {
+      document.title = 'Not Found | pierresaux'
+      this.setState({ error: true })
+
+      return
+    }
+
+    const { path, title } = markdowns[id]
+    const url = `/markdown/${path}.md`
+
     fetch(url).then(res => {
-      console.log(res)
       if (res.ok) {
         return res.text()
       } else {
         return Promise.reject(true)
       }
-    }).then(content => {
-      console.log(content)
+    }).then(md => {
       document.title = 'Blog | pierresaux'
-      this.setState({ content })
+
+      const html = marked(md)
+
+      this.setState({
+        blog:(
+          <div className='blogContent' key='unique'>
+            <div className='blogTitle' >
+              { title }
+            </div>
+            <div className='blogEntry' dangerouslySetInnerHTML={{ __html: html }} ></div>
+          </div>
+        )
+      })
     }).catch(error => {
       document.title = 'Not Found | pierresaux'
       this.setState({ error })
@@ -40,10 +61,10 @@ export default class Blog extends Component {
   }
 
   componentDidUpdate() {
-    const { content } = this.state
+    const { html } = this.state
     const { hash } = this.props.location
 
-    if (content != null) {
+    if (html != null) {
 
       this.highlight()
 
@@ -61,14 +82,12 @@ export default class Blog extends Component {
   componentWillMount() {
     document.title = 'Loading | pierresaux'
   }
-  render() {
-    const { content, error } = this.state
 
-    if (content != null) {
-      const html = marked(content)
-      return (
-        <div dangerouslySetInnerHTML={{ __html: html }} ></div>
-      )
+  getComponent() {
+    const { blog, error } = this.state
+
+    if (blog != null) {
+      return blog
     } else if (error != null) {
       return (
         <div id='blogNotFound'>
@@ -80,5 +99,15 @@ export default class Blog extends Component {
         <div id='blogEntry'>loading...</div>
       )
     }
+  }
+
+  render() {
+    return (
+      <div id='blogContainer' >
+        {
+          this.getComponent()
+        }
+      </div>
+    )
   }
 }

@@ -37,7 +37,8 @@ const rules = [
             'react',
           ],
           plugins: [
-            'transform-es2015-modules-commonjs'
+            'transform-es2015-modules-commonjs',
+            'transform-object-rest-spread'
           ]
         }
       }
@@ -59,7 +60,7 @@ const rules = [
   },
   {
     test: /\.md$/,
-    loader: 'file-loader?limit=16384&name=markdown/[name].[ext]',
+    loader: 'file-loader?limit=16384&name=markdown/blog/[name].[ext]',
   },
   { test: /\.json$/, loader: 'json-loader' }
 ]
@@ -72,7 +73,7 @@ const devServer = {
       {
         from: /^\/markdown\/.*$/,
         to({ parsedUrl }) {
-          return `${parsedUrl.pathname}.md`
+          return `${parsedUrl.pathname}`
         }
       }
     ]

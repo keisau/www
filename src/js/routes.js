@@ -7,7 +7,21 @@ import {
 } from 'react-router-dom'
 
 import {
-  App,
+  ConnectedRouter,
+  routerReducer,
+  routerMiddleware,
+  push,
+} from 'react-router-redux'
+
+import { Provider } from 'react-redux'
+
+import {
+  createStore,
+  combineReducers,
+  applyMiddleware,
+} from 'redux'
+
+import {
   Blog,
   Home,
   NotFound,
@@ -15,15 +29,35 @@ import {
 
 import history from './history'
 
+import reducers from './redux/reducers'
+
+import {
+  App,
+  Blog as BlogPage,
+} from './redux/containers'
+
+const middleware = routerMiddleware(history)
+
+const store = createStore(
+  combineReducers({
+    ...reducers,
+    router: routerReducer
+  }),
+  applyMiddleware(middleware)
+)
+
 export default (
-  <Router history={history}>
-    <App>
-      <Switch>
-        <Route path='/home' component={Home} />
-        <Route path='/blog/:article' component={Blog} />
-        <Redirect from='/' to='/home' />
-        <Route component={NotFound} />
-      </Switch>
-    </App>
-  </Router>
+  <Provider store={store} >
+    <ConnectedRouter history={history}>
+      <App>
+        <Switch>
+          <Route path='/home' component={Home} />
+          <Route path='/blog' exact component={BlogPage} />
+          <Route path='/blog/:article' component={Blog} />
+          <Redirect from='/' to='/home' />
+          <Route component={NotFound} />
+        </Switch>
+      </App>
+    </ConnectedRouter>
+  </Provider>
 )
