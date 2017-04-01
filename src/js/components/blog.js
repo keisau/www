@@ -4,7 +4,7 @@ import {
   Container,
   Row,
   Col,
-} from 'reactstrap
+} from 'reactstrap'
 
 import renderBlog from '../lib/render-blog'
 import markdowns from '../../md'
