@@ -18,8 +18,10 @@
     "css-loader": "^0.28.0",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
+    "font-awesome": "^4.7.0",
     "json-loader": "^0.5.4",
     "marked": "^0.3.6",
+    "moment": "^2.18.1",
     "node-sass": "^4.5.2",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
@@ -38,6 +40,8 @@
   },
   "scripts": {
     "build": "./node_modules/.bin/webpack -p --env.production",
-    "dev-server": "./node_modules/.bin/webpack-dev-server"
+    "dev-server": "./node_modules/.bin/webpack-dev-server",
+    "deploy": "aws s3 sync ./ s3://$BUCKET --delete --acl=\"public-read\"",
+    "test": "echo 'no tests!'"
   }
 }

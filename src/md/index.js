@@ -1,3 +1,5 @@
+import moment from 'moment/src/moment'
+
 /* import the markdowns here to let webpack know */
 
 const req = require.context('.', true, /\.md$/)
@@ -8,11 +10,8 @@ req.keys().forEach(key => {
 /* blog contents */
 export default [
   {
-    path: '/blog/test',
-    title: 'Test'
+    path: '/blog/hello',
+    title: 'Hello!',
+    createdAt: moment('2017-03-31'),
   },
-  {
-    path: '/blog/test2',
-    title: 'Test 2'
-  }
 ]

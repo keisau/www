@@ -1,0 +1,41 @@
+@import 'blog';
+@import 'home';
+
+nav {
+  a, a:visited, a:link, a:active {
+    color: $navFontColor;
+  }
+  a:hover {
+    color: $navHoverColor;
+  }
+}
+
+#appContent {
+  background-color: #eee;
+  color: $contentFontColor;
+
+  a {
+    color: $contentFontColor;
+  }
+}
+
+#footer {
+  color: $footerFontColor;
+
+  a, a:visited, a:link, a:active {
+    color: $footerFontColor;
+  }
+
+  a:hover {
+    color: $footerHoverColor;
+    text-decoration: none;
+  }
+
+  text-align: center;
+  background-color: white;
+  color: #888;
+  padding: 24px;
+
+  font-size: 12px;
+  font-weight: 200;
+}

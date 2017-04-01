@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import marked from 'marked'
 
 import {
+  Container,
+  Row,
+  Col,
+  Button,
   Nav,
   NavItem,
   NavLink,
@@ -12,6 +15,7 @@ import {
   Link
 } from 'react-router-dom'
 
+import renderBlog from '../../lib/render-blog'
 import markdowns from '../../../md'
 
 class Blog extends Component {
@@ -25,18 +29,18 @@ class Blog extends Component {
     }
 
     this.loadMore = (
-      <div id='blogLoadMore' onClick={ event => {
+      <Button id='blogLoadMore' onClick={ event => {
         this.getEntry(this.state.nextIndex)
         event.preventDefault()
       }} >
         Load more...
-      </div>
+      </Button>
     )
 
     this.noMore = (
-      <div id='blogNoMore' >
+      <Button id='blogNoMore' disabled >
         No more post.
-      </div>
+      </Button>
     )
   }
 
@@ -45,24 +49,16 @@ class Blog extends Component {
       return
     }
 
-    const { path, title } = markdowns[index]
+    const { path, title, createdAt } = markdowns[index]
     const url = `/markdown${path}.md`
 
     try {
       const res = await fetch(url)
 
       if (res.ok) {
-        const raw = await res.text()
+        const md = await res.text()
         const blogs = this.state.blogs.concat([
-          (
-            <div className='blogContent' key={`blog:index:${index}`} >
-              <div className='blogTitle' >
-                { title }
-              </div>
-              <div className='blogEntry' dangerouslySetInnerHTML={{ __html: marked(raw) }} ></div>
-              <div className='blogFooter' ><hr /></div>
-            </div>
-          )
+          renderBlog({ title, createdAt, md, index })
         ])
 
         this.setState({ blogs, nextIndex: index + 1 })
@@ -88,8 +84,14 @@ class Blog extends Component {
 
     return (
       <div id='blogContainer'>
-        { this.state.blogs }
-        { loader }
+        <Container>
+          <Row>
+            <Col>
+              { this.state.blogs }
+              { loader }
+            </Col>
+          </Row>
+        </Container>
       </div>
     )
   }

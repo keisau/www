@@ -8,7 +8,8 @@ const paths = {
 }
 
 const plugins = [
-  new ExtractTextPlugin('stylesheets/main.css')
+  new ExtractTextPlugin('stylesheets/main.css'),
+  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
 ]
 
 const output = {
@@ -21,7 +22,7 @@ const output = {
 const rules = [
   {
     test: /src\/assets\/.*$/,
-    loader: 'file-loader?limit=16384&name=assets/[name].[ext]',
+    loader: 'file-loader?limit=16384&context=src/assets&name=assets/[path][name].[ext]',
   },
   {
     test: /\.js$/,
@@ -57,6 +58,10 @@ const rules = [
       fallback: 'style-loader',
       use: 'css-loader!sass-loader'
     })
+  },
+  {
+    test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+    loader: 'file-loader?name=fonts/[name].[ext]'
   },
   {
     test: /\.md$/,

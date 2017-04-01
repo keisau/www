@@ -1,5 +1,22 @@
 @import '~bootstrap/scss/bootstrap.scss';
 
+$fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome.scss';
+
+$navFontColor: #555;
+$navHoverColor: #999;
+
+$contentFontColor: #666;
+
+$footerFontColor: rgb(136, 136, 136);
+$footerHoverColor: #aaa;
+
 body {
-  background-color: #f3f3f3;
+  #appContainer {
+    @import 'app';
+  }
+}
+
+.clear {
+  clear: both;
 }

@@ -1,0 +1,20 @@
+machine:
+  python:
+    version: 2.7.12
+  node:
+    version: 6.10.1
+
+dependencies:
+  override:
+    - pip install --upgrade -r requirements.txt
+
+test:
+  override:
+    - yarn test
+
+deployment:
+  develop:
+    branch: master
+    commands:
+      - yarn build
+      - yarn run deploy

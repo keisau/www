@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import marked from 'marked'
 
+import renderBlog from '../lib/render-blog'
 import markdowns from '../../md'
 
 export default class Blog extends Component {
@@ -13,16 +14,16 @@ export default class Blog extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.article
+    const index = this.props.match.params.article
 
-    if (id > markdowns.length - 1) {
+    if (index > markdowns.length - 1) {
       document.title = 'Not Found | pierresaux'
       this.setState({ error: true })
 
       return
     }
 
-    const { path, title } = markdowns[id]
+    const { path, title, createdAt } = markdowns[index]
     const url = `/markdown/${path}.md`
 
     fetch(url).then(res => {
@@ -38,12 +39,7 @@ export default class Blog extends Component {
 
       this.setState({
         blog:(
-          <div className='blogContent' key='unique'>
-            <div className='blogTitle' >
-              { title }
-            </div>
-            <div className='blogEntry' dangerouslySetInnerHTML={{ __html: html }} ></div>
-          </div>
+          renderBlog({ title, createdAt, index, md })
         )
       })
     }).catch(error => {
@@ -103,10 +99,14 @@ export default class Blog extends Component {
 
   render() {
     return (
-      <div id='blogContainer' >
-        {
-          this.getComponent()
-        }
+      <div id='blogContainer' className='hideFooter' >
+        <Container>
+          <Row>
+            <Col>
+              { this.getComponent() }
+            </Col>
+          </Row>
+        </Container>
       </div>
     )
   }
