@@ -16,5 +16,6 @@ deployment:
   develop:
     branch: master
     commands:
+      - yarn
       - yarn build
       - yarn run deploy
