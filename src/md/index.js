@@ -1,4 +1,4 @@
-import moment from 'moment/src/moment'
+import moment from 'moment'
 
 /* import the markdowns here to let webpack know */
 

@@ -6,6 +6,7 @@
   "author": "Keisau CHING <keisau.ching@pierresaux.me>",
   "license": "MIT",
   "devDependencies": {
+    "autoprefixer": "^6.7.7",
     "babel-core": "^6.24.0",
     "babel-loader": "7",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -23,6 +24,9 @@
     "marked": "^0.3.6",
     "moment": "^2.18.1",
     "node-sass": "^4.5.2",
+    "postcss-loader": "^1.3.3",
+    "postcss-smart-import": "^0.6.10",
+    "precss": "^1.4.0",
     "react": "^15.4.2",
     "react-addons-css-transition-group": "^15.4.2",
     "react-addons-transition-group": "^15.4.2",
