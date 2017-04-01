@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import marked from 'marked'
+import {
+  Container,
+  Row,
+  Col,
+} from 'reactstrap
 
 import renderBlog from '../lib/render-blog'
 import markdowns from '../../md'
