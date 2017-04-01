@@ -19,3 +19,4 @@ deployment:
       - yarn
       - yarn build
       - yarn run deploy
+      - yarn run invalidate-cache
