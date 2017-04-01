@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { findDOMNode } from 'react-dom'
+import hljs from '../../lib/highlight'
 
 import {
   Container,
@@ -23,7 +25,7 @@ class Blog extends Component {
     super(props)
 
     this.state = {
-      nextIndex: 0,
+      nextIndex: markdowns.length - 1,
       blogs: [],
       error: null,
     }
@@ -45,7 +47,7 @@ class Blog extends Component {
   }
 
   async getEntry(index) {
-    if (index > markdowns.length - 1) {
+    if (index < 0) {
       return
     }
 
@@ -61,7 +63,7 @@ class Blog extends Component {
           renderBlog({ title, createdAt, md, index })
         ])
 
-        this.setState({ blogs, nextIndex: index + 1 })
+        this.setState({ blogs, nextIndex: index - 1 })
 
         document.title = 'Blog | pierresaux'
       } else {
@@ -78,9 +80,27 @@ class Blog extends Component {
     this.getEntry(this.state.nextIndex)
   }
 
+  highlight() {
+    const domNode = findDOMNode(this)
+    const nodes = domNode.querySelectorAll('pre code:not(.highlighted)')
+
+    nodes.forEach(node => {
+      hljs.highlightBlock(node)
+      node.className = `${node.className} highlighted img-thumbnail`
+    })
+  }
+
+  componentDidUpdate() {
+    const { blogs } = this.state
+
+    if (blogs.length > 0) {
+      this.highlight()
+    }
+  }
+
   render() {
     const { loadMore, noMore, state: { nextIndex } } = this
-    const loader = nextIndex === markdowns.length ? noMore : loadMore
+    const loader = nextIndex < 0 ? noMore : loadMore
 
     return (
       <div id='blogContainer'>

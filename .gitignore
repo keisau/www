@@ -36,6 +36,11 @@ jspm_packages
 # Optional REPL history
 .node_repl_history
 
+# build directory
 build
 
+# macOS
 .DS_Store
+
+# testing purposes
+**/*test*.md

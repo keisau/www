@@ -14,4 +14,4 @@ export default [
     title: 'Hello!',
     createdAt: moment('2017-03-31'),
   },
-]
+].sort((a, b) => a.createdAt.diff(b.createdAt))

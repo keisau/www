@@ -20,6 +20,7 @@
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.10.1",
     "font-awesome": "^4.7.0",
+    "highlight.js": "^9.10.0",
     "json-loader": "^0.5.4",
     "marked": "^0.3.6",
     "moment": "^2.18.1",

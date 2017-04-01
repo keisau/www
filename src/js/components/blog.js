@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import marked from 'marked'
+import { findDOMNode } from 'react-dom'
+import hljs from '../lib/highlight'
 import {
   Container,
   Row,
@@ -18,7 +20,7 @@ export default class Blog extends Component {
     }
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const index = this.props.match.params.article
 
     if (index > markdowns.length - 1) {
@@ -31,42 +33,40 @@ export default class Blog extends Component {
     const { path, title, createdAt } = markdowns[index]
     const url = `/markdown/${path}.md`
 
-    fetch(url).then(res => {
+    try {
+      const res = await fetch(url)
+
       if (res.ok) {
-        return res.text()
+        const md = await res.text()
+        const blog = renderBlog({ title, createdAt, md, index })
+
+        this.setState({ blog })
+
+        document.title = 'Blog | pierresaux'
       } else {
-        return Promise.reject(true)
+        throw true
       }
-    }).then(md => {
-      document.title = 'Blog | pierresaux'
-
-      const html = marked(md)
-
-      this.setState({
-        blog:(
-          renderBlog({ title, createdAt, index, md })
-        )
-      })
-    }).catch(error => {
+    } catch(error) {
       document.title = 'Not Found | pierresaux'
       this.setState({ error })
+    }
+  }
+
+  highlight() {
+    const domNode = findDOMNode(this)
+    const nodes = domNode.querySelectorAll('pre code:not(.highlighted)')
+
+    nodes.forEach(node => {
+      hljs.highlightBlock(node)
+      node.className = `${node.className} highlighted img-thumbnail`
     })
   }
 
-  /*
-  highlight() {
-    const domNode = findDOMNode(this)
-    const nodes = domNode.querySelectorAll('pre code')
-
-    nodes.forEach(node => hljs.highlightBlock(node))
-  }
-
   componentDidUpdate() {
-    const { html } = this.state
+    const { blog } = this.state
     const { hash } = this.props.location
 
-    if (html != null) {
-
+    if (blog != null) {
       this.highlight()
 
       if (hash != null) {
@@ -79,7 +79,7 @@ export default class Blog extends Component {
       }
     }
   }
-  */
+
   componentWillMount() {
     document.title = 'Loading | pierresaux'
   }
