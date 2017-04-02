@@ -31,7 +31,7 @@ export default class Blog extends Component {
     }
 
     const { path, title, createdAt } = markdowns[index]
-    const url = `/markdown/${path}.md`
+    const url = `/markdown${path}.md`
 
     try {
       const res = await fetch(url)
@@ -64,19 +64,9 @@ export default class Blog extends Component {
 
   componentDidUpdate() {
     const { blog } = this.state
-    const { hash } = this.props.location
 
     if (blog != null) {
       this.highlight()
-
-      if (hash != null) {
-        const anchorName = hash.replace('#', '')
-        const element = document.getElementsByName(anchorName)[0]
-
-        if (element != null) {
-          element.focus()
-        }
-      }
     }
   }
 
