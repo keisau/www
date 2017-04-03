@@ -24,6 +24,7 @@ export default function homeComponent(props) {
               <h1>Background</h1>
 
               <ul>
+                <li>Hong Kong based</li>
                 <li>I am a software engineer :)</li>
                 <li>I specialize at Javascript(es2015 - 2017), NodeJS (up to 6), and Amazon Web Service.</li>
               </ul>
@@ -33,7 +34,7 @@ export default function homeComponent(props) {
               <ul>
                 <li>Chinese calligraphy</li>
                 <li>IPSC Action air</li>
-                <li>Thinking :)</li>
+                <li>Thinking (Philosophy) :)</li>
               </ul>
           </Col>
         </Row>

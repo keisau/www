@@ -1,7 +1,5 @@
 # blog
 
----
-
 to be honest, it is a personal homepage :)
 
 ## tech stack
@@ -26,3 +24,27 @@ to be honest, it is a personal homepage :)
 2. AWS S3
 3. Cloudfront
 4. Cloudflare
+
+## development
+
+```bash
+yarn run dev-server
+```
+
+or
+
+```bash
+npm run dev-server
+```
+
+## build
+
+```bash
+yarn build
+```
+
+or
+
+```bash
+npm build
+```

@@ -10,6 +10,11 @@ req.keys().forEach(key => {
 /* blog contents */
 export default [
   {
+    path: '/blog/newblog',
+    title: 'A new hope',
+    createdAt: moment('2017-04-03'),
+  },
+  {
     path: '/blog/hello',
     title: 'Hello!',
     createdAt: moment('2017-03-31'),
