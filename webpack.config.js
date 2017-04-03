@@ -8,33 +8,7 @@ const paths = {
 }
 
 const entry = {
-  'babel-polyfill': 'babel-polyfill',
   'whatwg-fetch': 'whatwg-fetch',
-  'react-family': [
-    'react',
-    'react-dom',
-    'react-addons-css-transition-group',
-    'react-addons-transition-group',
-    'react-redux',
-    'react-router-dom',
-    'react-router',
-    'react-router-redux',
-    'redux',
-    'reactstrap',
-  ],
-  highlight:  [
-    'highlight.js/lib/highlight',
-    'highlight.js/lib/languages/cpp',
-    'highlight.js/lib/languages/css',
-    'highlight.js/lib/languages/python',
-    'highlight.js/lib/languages/scss',
-    'highlight.js/lib/languages/javascript',
-    'highlight.js/lib/languages/xml',
-  ],
-  vendor: [
-    'moment/moment',
-    'marked',
-  ],
   main: path.resolve(paths.src, 'js/index.js')
 }
 
@@ -44,10 +18,6 @@ const plugins = [
   new webpack.optimize.CommonsChunkPlugin({
     name: [
       'vendor',
-      'manifest',
-      'babel-polyfill',
-      'react-family',
-      'highlight',
     ]
   }),
 ]
