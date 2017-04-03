@@ -8,7 +8,6 @@ const paths = {
 }
 
 const entry = {
-  'whatwg-fetch': 'whatwg-fetch',
   main: path.resolve(paths.src, 'js/index.js')
 }
 

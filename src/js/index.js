@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+import 'whatwg-fetch'
 
 import 'file-loader?name=[name].[ext]!../html/index.html'
 import '../sass/stylesheet.scss'
