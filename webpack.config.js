@@ -7,13 +7,53 @@ const paths = {
   build: path.resolve(__dirname, 'build'),
 }
 
+const entry = {
+  'babel-polyfill': 'babel-polyfill',
+  'whatwg-fetch': 'whatwg-fetch',
+  'react-family': [
+    'react',
+    'react-dom',
+    'react-addons-css-transition-group',
+    'react-addons-transition-group',
+    'react-redux',
+    'react-router-dom',
+    'react-router',
+    'react-router-redux',
+    'redux',
+    'reactstrap',
+  ],
+  highlight:  [
+    'highlight.js/lib/highlight',
+    'highlight.js/lib/languages/cpp',
+    'highlight.js/lib/languages/css',
+    'highlight.js/lib/languages/python',
+    'highlight.js/lib/languages/scss',
+    'highlight.js/lib/languages/javascript',
+    'highlight.js/lib/languages/xml',
+  ],
+  vendor: [
+    'moment/moment',
+    'marked',
+  ],
+  main: path.resolve(paths.src, 'js/index.js')
+}
+
 const plugins = [
   new ExtractTextPlugin('stylesheets/main.css'),
-  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+  new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+  new webpack.optimize.CommonsChunkPlugin({
+    name: [
+      'vendor',
+      'manifest',
+      'babel-polyfill',
+      'react-family',
+      'highlight',
+    ]
+  }),
 ]
 
 const output = {
-  filename: 'scripts/bundle.js',
+  filename: 'scripts/[name].js',
   libraryTarget: 'umd',
   publicPath: '/',
   path: paths.build
@@ -39,7 +79,7 @@ const rules = [
           ],
           plugins: [
             'transform-es2015-modules-commonjs',
-            'transform-object-rest-spread'
+            'transform-object-rest-spread',
           ]
         }
       }
@@ -96,20 +136,14 @@ module.exports = function(env = {}) {
   const isProduction = !!env.production || process.env.NODE_ENV === 'production'
 
   return isProduction ? {
-    entry:  [
-      'whatwg-fetch',
-      path.resolve(paths.src, 'js/index.js')
-    ],
+    entry,
     output,
     module: {
       rules
     },
     plugins,
   } : {
-    entry:  [
-      'whatwg-fetch',
-      path.resolve(paths.src, 'js/index.js')
-    ],
+    entry,
     output,
     module: {
       rules
