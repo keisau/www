@@ -8,16 +8,20 @@ const paths = {
 }
 
 const entry = {
-  main: path.resolve(paths.src, 'js/index.js')
+  main: path.resolve(paths.src, 'js/index.js'),
 }
 
 const plugins = [
   new ExtractTextPlugin('stylesheets/main.css'),
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   new webpack.optimize.CommonsChunkPlugin({
-    name: [
-      'vendor',
-    ]
+    name: 'vendor',
+    minChunks({ context }) {
+      if (context) {
+        return /node_modules/.test(context) &&
+          /(react|redux)/.test(context) === false
+      }
+    }
   }),
 ]
 
