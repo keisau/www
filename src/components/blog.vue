@@ -34,6 +34,10 @@ export default {
       createdAt,
     } = this.post
 
+    if (!this.linked) {
+      document.title = `${title} | Keisau CHING`
+    }
+
     return {
       prefix,
       name,

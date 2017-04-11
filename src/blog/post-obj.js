@@ -24,6 +24,17 @@ export const postObj = {
       }
     ],
     createdAt: moment('2017-03-31'),
+  },
+  'vue-js': {
+    title: 'Hello! Vue.js',
+    authors: [
+      {
+        name: 'Keisau CHING',
+        email: 'keisau.ching@pierresaux.me',
+        github: 'pierresaux',
+      }
+    ],
+    createdAt: moment('2017-04-11 17:27:15'),
   }
 }
 

@@ -1,3 +1,4 @@
-https://blog.pierresaux.me/home
-https://blog.pierresaux.me/blog
-https://blog.pierresaux.me/blog/0
+https://www.pierresaux.me
+https://www.pierresaux.me/blog/hello
+https://www.pierresaux.me/blog/newblog
+https://www.pierresaux.me/blog/vue.js

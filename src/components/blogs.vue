@@ -10,6 +10,8 @@ import { posts } from '../blog'
 
 export default {
   data() {
+    document.title = 'Blogs | Keisau CHING'
+
     return {
       posts
     }
