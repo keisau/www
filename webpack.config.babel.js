@@ -12,14 +12,15 @@ const paths = {
 }
 
 const plugins = [
-  new ExtractTextPlugin('stylesheets/main.css'),
+  new ExtractTextPlugin({
+    filename: 'stylesheets/[name].css'
+  }),
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
     minChunks({ context }) {
       if (context) {
-        return /node_modules/.test(context) &&
-          /(react|redux)/.test(context) === false
+        return /node_modules/.test(context) === false
       }
     }
   }),
@@ -73,13 +74,23 @@ module.exports = function(env = {}) {
           loader: 'babel-loader'
         },
         {
+          test: /\.css$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              'css-loader',
+              'postcss-loader',
+            ]
+          })
+        },
+        {
           test: /\.scss$/,
           use: ExtractTextPlugin.extract({
             fallback: 'style-loader',
             use: [
               'css-loader',
               'postcss-loader',
-              'sass-loader'
+              'sass-loader',
             ]
           })
         },

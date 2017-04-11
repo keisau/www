@@ -26,6 +26,16 @@ div(class='blogContent', v-if='post != null')
 <script>
 import marked from 'marked'
 import { prefix } from '../blog'
+import { prettyPrintOne } from 'google-code-prettify/bin/prettify.min'
+
+marked.setOptions({
+  gfm: true,
+  sanitize: true,
+  highlight(code, lang) {
+    console.log(code, lang)
+    return prettyPrintOne(code, lang, true)
+  }
+})
 
 export default {
   props: [

@@ -1,6 +1,17 @@
 I started revamping my blog with [Vue.js](//vuejs.org). This one is real cool and solid!
 
-For the code, checkout [this](//github.com/pierresaux/blog).
+For the code, checkout [this](//github.com/pierresaux/blog). Here are the basic usage:
+
+```bash
+# install dependencies
+yarn
+
+# run dev server
+yarn run dev-server
+
+# build products
+yarn build
+```
 
 ## Stack
 
@@ -19,7 +30,7 @@ and more...I will try to consolidate the site source code and minimize dependenc
 
 Something have been dropped for simplicity.
 
-1. CloudFront
+1. whatwg-fetch
 2. Bootstrap
 
 If you feel lost with Vue.js stack, this site may be useful.

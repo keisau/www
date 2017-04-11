@@ -5,6 +5,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import '../scss/stylesheet.scss'
+import 'google-code-prettify/bin/prettify.min.css'
 import './favicon'
 
 import Root from '../components/index.vue'
