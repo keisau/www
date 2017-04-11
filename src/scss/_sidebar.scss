@@ -1,16 +1,26 @@
 
 #sidebarContainer {
   margin: 0 auto;
+
+  padding-right: 0;
+
   @media (min-width: $sidebarMaxLength + $contentMaxLength) {
+    margin-bottom: 0;
+    padding-right: 24px;
     float: left;
   }
 
   max-width: $sidebarMaxLength;
 
-  padding-right: 24px;
   box-sizing: padding-box;
 
   i.fa {
     margin: 0 6px;
+  }
+
+  #contacts {
+    margin-bottom: 32px;
+    font-size: 12px;
+    font-weight: 300;
   }
 }

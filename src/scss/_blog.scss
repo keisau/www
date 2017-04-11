@@ -1,9 +1,12 @@
 #blogsContainer {
   margin: 0 auto;
-  padding: 0;
+
+  padding-top: 24px;
+
   @media (min-width: $sidebarMaxLength + $contentMaxLength) {
     float: right;
     padding: 26px 0;
+    border: none;
   }
 
   max-width: $contentMaxLength;
@@ -13,7 +16,6 @@
 
   .blogContainer {
     padding: 0 16px;
-    margin-bottom: 32px;
 
     .blogContent {
       .blogHeader {
@@ -56,7 +58,6 @@
         clear: both;
 
         padding: 12px 0;
-        border-bottom: 1px solid $basicFontColor;
 
         font-size: 12px;
       }

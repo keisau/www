@@ -5,13 +5,22 @@ div(class='blogContent', v-if='post != null')
       span( class='title', v-text='title')
     span(v-if='!linked', class='title', v-text='title')
     span(class='createdAt', v-text='createdAt')
+
   div(class='blogEntry', v-html='html')
+
   div.blogFooter
     div(class='authorsContainer', v-for='author in authors')
       a(:href='`mailto:${author.email}`', v-text='author.name')
       br
       a(:href='`//github.com/${author.github}`')
         i(class='fa fa-github', aria-hidden='true')  github
+
+    div#divider
+      div.bubble
+      div.bubble
+      div.bubble
+      div.bubble
+      div.bubble
 </template>
 
 <script>

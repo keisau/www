@@ -42,6 +42,8 @@ body {
     padding: 32px 0 24px 0;
     max-width: $sidebarMaxLength + $contentMaxLength;
 
+    overflow: hidden;
+
     @import 'app';
     @import 'sidebar';
   }
