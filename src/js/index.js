@@ -1,14 +1,27 @@
 import 'babel-polyfill'
-import 'whatwg-fetch'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
 
-import 'file-loader?name=[name].[ext]!../html/index.html'
-import '../sass/stylesheet.scss'
-import '../md'
+Vue.use(VueRouter)
+
+import '../scss/stylesheet.scss'
 import './favicon'
 
-import React from 'react'
-import { render } from 'react-dom'
-
+import Root from '../components/index.vue'
 import routes from './routes'
 
-render(routes, document.getElementById('root'))
+const router = new VueRouter({
+  mode: 'history',
+  routes
+})
+
+const app = new Vue({
+  router,
+  render: h => h(Root),
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.getElementById('root') != null) {
+    app.$mount('#root')
+  }
+})

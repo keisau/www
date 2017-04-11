@@ -1,0 +1,46 @@
+#blogsContainer {
+  margin: 0 auto;
+  @media (min-width: $sidebarMaxLength + $contentMaxLength) {
+    float: right;
+  }
+
+  max-width: $contentMaxLength;
+  word-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  overflow-y: auto;
+
+  .blogContainer {
+    padding-top: 24px;
+
+    .blogContent {
+      .blogHeader {
+        font-weight: 600;
+
+        .title {
+          float: left;
+          font-size: 24px;
+        }
+        .createdAt {
+          float: right;
+          font-size: 14px;
+          padding-top: 12px;
+          padding-left: 12px;
+        }
+        padding-bottom: 24px;
+      }
+
+      .blogEntry {
+        font-weight: 300;
+      }
+
+      .blogFooter {
+        padding-bottom: 8px;
+        border-bottom: 1px solid $basicFontColor;
+
+        font-size: 12px;
+      }
+
+    }
+  }
+}
