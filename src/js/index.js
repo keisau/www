@@ -7,6 +7,7 @@ Vue.use(VueRouter)
 import '../scss/stylesheet.scss'
 import 'google-code-prettify/bin/prettify.min.css'
 import './favicon'
+import 'file-loader?name=assets/[name].[ext]!../sitemaps.txt'
 
 import Root from '../components/index.vue'
 import routes from './routes'
