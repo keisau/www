@@ -1,38 +1,48 @@
 #blogsContainer {
   margin: 0 auto;
+  padding: 0;
   @media (min-width: $sidebarMaxLength + $contentMaxLength) {
     float: right;
+    padding: 26px 0;
   }
 
   max-width: $contentMaxLength;
   word-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
-  overflow-y: auto;
 
   .blogContainer {
-    padding: 24px 16px;
+    padding: 0 16px;
+    margin-bottom: 32px;
 
     .blogContent {
-
       .blogHeader {
         font-weight: 700;
+        overflow: hidden;
 
         .title {
+
           float: left;
           font-size: 24px;
         }
         .createdAt {
           float: right;
+
           font-size: 14px;
           padding-top: 12px;
           padding-left: 12px;
         }
-        padding-bottom: 24px;
+        margin-bottom: 24px;
       }
 
       .blogEntry {
-        a { font-weight: 800; }
+        clear: both;
+
+        margin-top: 16px;
+
+        a {
+          font-weight: 800;
+        }
 
         h1, h2, h3, h4, h5, h6 {
           font-weight: 500;
@@ -43,7 +53,9 @@
       }
 
       .blogFooter {
-        padding-bottom: 8px;
+        clear: both;
+
+        padding: 12px 0;
         border-bottom: 1px solid $basicFontColor;
 
         font-size: 12px;
