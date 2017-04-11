@@ -5,10 +5,12 @@ div#sidebarContainer
 
   div#contacts
     a(href='mailto:keisau.ching@pierresaux.me')
-      i(class='fa fa-envelope', aria-hidden='true')  keisau.ching@pierresaux.me
+      i(class='fa fa-envelope', aria-hidden='true')
+      | keisau.ching@pierresaux.me
     br
     a(href='//github.com/pierresaux')
-      i(class='fa fa-github', aria-hidden='true')  github.com/pierresaux
+      i(class='fa fa-github', aria-hidden='true')
+      | github.com/pierresaux
 
   p #SoftwareEngineer
     i(class='fa fa-code', aria-hidden='true')

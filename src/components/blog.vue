@@ -13,7 +13,8 @@ div(class='blogContent', v-if='post != null')
       a(:href='`mailto:${author.email}`', v-text='author.name')
       br
       a(:href='`//github.com/${author.github}`')
-        i(class='fa fa-github', aria-hidden='true')  github
+        i(class='fa fa-github', aria-hidden='true')
+        | &nbsp;github
 
     div#divider
       div.bubble
@@ -32,7 +33,6 @@ marked.setOptions({
   gfm: true,
   sanitize: true,
   highlight(code, lang) {
-    console.log(code, lang)
     return prettyPrintOne(code, lang, true)
   }
 })
