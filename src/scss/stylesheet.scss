@@ -1,0 +1,52 @@
+@import '~highlight.js/styles/atom-one-dark';
+
+$fa-font-path: '~font-awesome/fonts';
+@import '~font-awesome/scss/font-awesome.scss';
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i');
+
+$backgroundColor: #547485;
+$basicFontColor: #e2e2e2;
+$basicHoverColor: #bababa;
+
+$navFontColor: $basicFontColor;
+$navHoverColor: $basicHoverColor;
+
+$contentFontColor: $basicFontColor;
+
+$footerFontColor: $basicFontColor;
+$footerHoverColor: $basicHoverColor;
+
+$sidebarMaxLength: 260px;
+$contentMaxLength: 400px;
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: $backgroundColor;
+  color: $basicFontColor;
+
+  a {
+    text-decoration: none;
+  }
+
+  a, a:visited, a:link, a:active {
+    color: $basicFontColor;
+  }
+
+  a:hover {
+    color: $basicHoverColor;
+  }
+
+  #appContainer {
+    margin: 0 auto;
+    padding: 32px 0 24px 0;
+    max-width: $sidebarMaxLength + $contentMaxLength;
+
+    @import 'app';
+    @import 'sidebar';
+  }
+}
+
+.clear {
+  clear: both;
+}

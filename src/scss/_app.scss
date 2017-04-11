@@ -1,5 +1,4 @@
 @import 'blog';
-@import 'home';
 
 nav {
   a, a:visited, a:link, a:active {
@@ -10,16 +9,8 @@ nav {
   }
 }
 
-#appContent {
-  background-color: #eee;
-  color: $contentFontColor;
-
-  a {
-    color: $contentFontColor;
-  }
-}
-
 #footer {
+  max-width: calc($sidebarMaxLength + $contentMaxLength);
   color: $footerFontColor;
 
   a, a:visited, a:link, a:active {
@@ -32,10 +23,8 @@ nav {
   }
 
   text-align: center;
-  background-color: white;
-  color: #888;
-  padding: 24px 0 64px 0;
+  padding-top: 64px;
 
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 200;
 }

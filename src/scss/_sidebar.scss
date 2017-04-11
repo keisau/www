@@ -1,0 +1,12 @@
+
+#sidebarContainer {
+  margin: 0 auto;
+  @media (min-width: $sidebarMaxLength + $contentMaxLength) {
+    float: left;
+  }
+
+  max-width: $sidebarMaxLength;
+
+  padding-right: 24px;
+  box-sizing: padding-box;
+}

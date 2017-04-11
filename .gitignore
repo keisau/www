@@ -43,4 +43,4 @@ build
 .DS_Store
 
 # testing purposes
-**/*test*.md
+*test*
