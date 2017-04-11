@@ -1,6 +1,6 @@
 ## Boring job, so far
 
-What could be more serious than wasting time sitting in office? Ugh, I can't stand it. So I started revamping my blog with [Vue.js](//vuejs.org). This one is real cool and solid!
+I started revamping my blog with [Vue.js](//vuejs.org). This one is real cool and solid!
 
 For the code, checkout [this](//github.com/pierresaux/blog).
 
