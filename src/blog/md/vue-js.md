@@ -1,5 +1,3 @@
-## Boring job, so far
-
 I started revamping my blog with [Vue.js](//vuejs.org). This one is real cool and solid!
 
 For the code, checkout [this](//github.com/pierresaux/blog).
