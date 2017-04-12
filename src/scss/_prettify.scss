@@ -1,27 +1,22 @@
 pre {
   code {
-    li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 {
+    li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8 {
       list-style-type: decimal !important;
+
+      span.com {
+        color: $commentColor;
+      }
+      span.pln {
+        color: $basicHoverColor;
+      }
     }
 
     li.L1, li.L3, li.L5, li.L7 {
       background-color: #5e7f91;
-
-      span.com {
-        color: $commentColor;
-      }
-      span.pln {
-        color: $basicHoverColor;
-      }
     }
 
     li.L0, li.L2, li.L4, li.L6, li.L8 {
-      span.com {
-        color: $commentColor;
-      }
-      span.pln {
-        color: $basicHoverColor;
-      }
+      background-color: #4a6777;
     }
   }
 }
