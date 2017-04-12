@@ -3,6 +3,7 @@ import path from 'path'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 import PrerenderSpaPlugin from 'prerender-spa-plugin'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
+import CopyWebpackPlugin from 'copy-webpack-plugin'
 
 import { names, prefix } from './src/blog/post-obj'
 
@@ -24,6 +25,12 @@ const plugins = [
       }
     }
   }),
+  new CopyWebpackPlugin([
+    {
+      from: path.resolve(paths.src, 'assets'),
+      to: 'assets'
+    }
+  ]),
   new HtmlWebpackPlugin({
     template: '!!pug-loader!src/templates/index.pug',
     inject: 'head',
