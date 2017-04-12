@@ -26,7 +26,7 @@ yarn build
 
 and more...I will try to consolidate the site source code and minimize dependencies.
 
-## Dropped Stack
+## Dropped
 
 Something have been dropped for simplicity.
 

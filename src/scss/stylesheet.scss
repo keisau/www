@@ -38,6 +38,18 @@ body {
     color: $basicHoverColor;
   }
 
+  img {
+    border-radius: 4px;
+    border: 1px solid $basicFontColor;
+    border-image: none 1 stretch;
+    box-sizing: border-box;
+    padding: 2px;
+    background-color: rgba(196, 196, 196, 0.35);
+
+    max-width: 100%;
+    max-height: 100%;
+  }
+
   #appContainer {
     margin: 0 auto;
     padding: 24px 0;
