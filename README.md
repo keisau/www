@@ -9,7 +9,7 @@ it is a personal homepage :)
   2. Prerender SPA Plugin
 2. Webpack 2
 3. Babel (ES2015 - 2016)
-4. Highlight.js
+4. code-prettify
 5. PostCSS
 6. SCSS
 7. Font-awesome
