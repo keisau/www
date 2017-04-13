@@ -8,99 +8,87 @@ pre {
       background-color: #4b6370;
     }
 
-    .pln {
-      color: $codeColor;
-    }
-
-    @media screen {
-
-      /* string content */
-
-      .str {
-        color: #99cc99;
+    li {
+      span.pln {
+        color: $codeColor;
       }
 
-      /* keyword */
+      @media screen {
+        /* string content */
+        span.str {
+          color: #99cc99;
+        }
 
-      .kwd {
-        color: #cc99cc;
-      }
+        /* keyword */
+        span.kwd {
+          color: #cc99cc;
+        }
 
-      /* comment */
+        /* comment */
+        span.com {
+          color: #9d9d9d;
+        }
 
-      .com {
-        color: #9d9d9d;
-      }
+        /* type name */
+        span.typ {
+          color: #6699cc;
+        }
 
-      /* type name */
+        /* literal value */
+        span.lit {
+          color: #f99157;
+        }
 
-      .typ {
-        color: #6699cc;
-      }
+        /* punctuation */
+        span.pun {
+          color: #cccccc;
+        }
 
-      /* literal value */
+        /* lisp open bracket */
+        span.opn {
+          color: #cccccc;
+        }
 
-      .lit {
-        color: #f99157;
-      }
+        /* lisp close bracket */
+        .clo {
+          color: #cccccc;
+        }
 
-      /* punctuation */
+        /* markup tag name */
+        span.tag {
+          color: #f2777a;
+        }
 
-      .pun {
-        color: #cccccc;
-      }
+        /* markup attribute name */
+        span.atn {
+          color: #f99157;
+        }
 
-      /* lisp open bracket */
+        /* markup attribute value */
+        span.atv {
+          color: #66cccc;
+        }
 
-      .opn {
-        color: #cccccc;
-      }
+        /* declaration */
+        span.dec {
+          color: #f99157;
+        }
 
-      /* lisp close bracket */
+        /* variable name */
+        span.var {
+          color: #f2777a;
+        }
 
-      .clo {
-        color: #cccccc;
-      }
-
-      /* markup tag name */
-
-      .tag {
-        color: #f2777a;
-      }
-
-      /* markup attribute name */
-
-      .atn {
-        color: #f99157;
-      }
-
-      /* markup attribute value */
-
-      .atv {
-        color: #66cccc;
-      }
-
-      /* declaration */
-
-      .dec {
-        color: #f99157;
-      }
-
-      /* variable name */
-
-      .var {
-        color: #f2777a;
-      }
-
-      /* function name */
-
-      .fun {
-        color: #6699cc;
+        /* function name */
+        span.fun {
+          color: #6699cc;
+        }
       }
     }
 
     li {
       list-style-type: decimal-leading-zero;
+      color: #70818b;
     }
 
     li:before {
