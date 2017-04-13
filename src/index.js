@@ -5,9 +5,9 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import 'normalize.css'
-import '../scss/stylesheet.scss'
+import './scss/stylesheet.scss'
 
-import Root from '../components/index.vue'
+import Root from './components/index.vue'
 import routes from './routes'
 
 const router = new VueRouter({

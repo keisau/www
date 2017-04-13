@@ -7,6 +7,7 @@ div#blogsContainer
 <script>
 import Blog from './blog.vue'
 import { posts } from '../blog'
+import { sendBlogsView } from '../lib/ga'
 
 export default {
   data() {
@@ -18,6 +19,10 @@ export default {
   },
   components: {
     Blog
+  },
+  mounted() {
+    console.log('2')
+    sendBlogsView()
   }
 }
 

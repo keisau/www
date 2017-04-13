@@ -53,7 +53,7 @@ module.exports = function(env = {}) {
 
   return {
     entry: {
-      main: path.resolve(paths.src, 'js/index.js'),
+      main: path.resolve(paths.src, 'index.js'),
     },
     output: {
       filename: 'scripts/[name].js',

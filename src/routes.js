@@ -1,7 +1,7 @@
-import App from '../components/app.vue'
-import Blogs from '../components/blogs.vue'
-import BlogContainer from '../components/blog-container.vue'
-import { prefix, posts } from '../blog'
+import App from './components/app.vue'
+import Blogs from './components/blogs.vue'
+import BlogContainer from './components/blog-container.vue'
+import { prefix, posts } from './blog'
 
 const routes = [
   {
