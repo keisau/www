@@ -21,7 +21,7 @@ const plugins = [
     name: 'vendor',
     minChunks({ context }) {
       if (context) {
-        return /node_modules/.test(context) === false
+        return /node_modules/.test(context) === true
       }
     }
   }),
