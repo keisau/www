@@ -1,0 +1,15 @@
+before_install:
+  - nvm i
+  - pip install --upgrade -r ./requirements.txt
+
+install:
+  - yarn
+
+script:
+  - yarn build
+
+cache: yarn
+
+after_success:
+  - yarn run deploy
+  - yarn run invalidate-cache
