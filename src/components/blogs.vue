@@ -21,7 +21,6 @@ export default {
     Blog
   },
   mounted() {
-    console.log('2')
     sendBlogsView()
   }
 }

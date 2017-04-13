@@ -58,7 +58,9 @@ module.exports = function(env = {}) {
     output: {
       filename: 'scripts/[name].js',
       publicPath: '/',
-      path: paths.build
+      path: paths.build,
+      hashFunction: 'sha256',
+      hashDigestLength: 8,
     },
     module: {
       rules: [
@@ -103,11 +105,11 @@ module.exports = function(env = {}) {
         },
         {
           test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
-          loader: 'file-loader?name=fonts/[name].[ext]'
+          loader: 'url-loader?name=fonts/[sha256:hash:hex:8].[ext]&limit=4096'
         },
         {
           test: /\.(jpe?g|png|gif)$/,
-          loader: 'file-loader?name=assets/images/[chunkhash].[ext]'
+          loader: 'file-loader?name=assets/images/[sha256:hash:hex:8].[ext]'
         },
         {
           test: /\.md$/,
