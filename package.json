@@ -48,7 +48,7 @@
     "build": "./node_modules/.bin/webpack -p --progress --env.production",
     "dev-server": "./node_modules/.bin/webpack-dev-server",
     "deploy": "aws s3 sync ./build s3://$BUCKET --delete --acl=\"public-read\"",
-    "invalidate-cache": "aws configure set preview.cloudfront true && aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID  --paths $(find ./build -type d | sed 's/^\\.\\/build\\(.*\\)/\\1\\/*/g' | tr '\n' ' ')",
+    "invalidate-cache": "aws configure set preview.cloudfront true && aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID  --paths '/*'",
     "clean": "rm -rf build",
     "test": "echo 'no tests!'"
   }
