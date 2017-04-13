@@ -7,6 +7,9 @@ machine:
 dependencies:
   override:
     - pip install --upgrade -r requirements.txt
+    - yarn
+  cache_directories:
+    - ~/.cache/yarn
 
 test:
   override:
@@ -16,7 +19,7 @@ deployment:
   develop:
     branch: master
     commands:
-      - yarn
       - yarn build
       - yarn run deploy
       - yarn run invalidate-cache
+      - yarn run collect-artifacts

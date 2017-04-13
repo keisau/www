@@ -49,6 +49,7 @@
     "dev-server": "./node_modules/.bin/webpack-dev-server",
     "deploy": "aws s3 sync ./build s3://$BUCKET --delete --acl=\"public-read\"",
     "invalidate-cache": "aws configure set preview.cloudfront true && aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID  --paths '/*'",
+    "collect-artifacts": "mv ./build $CIRCLE_ARTIFACTS",
     "clean": "rm -rf build",
     "test": "echo 'no tests!'"
   }
